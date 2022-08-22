@@ -6,14 +6,13 @@ const Lands = (props) => {
   const {name, rides} = props;
 
   const attractions = rides.map(attraction => {
-    console.log(attraction);
     return <Attraction key={attraction.id} name={attraction.name} waitingTime={attraction.wait_time} isOpen={attraction.is_open}/>
   });
   return (
     <div>
       <h1>{name}</h1>
       <Container fluid>
-        <Row className="p-5">
+        <Row className="p-4">
         {attractions}
         </Row>
       </Container>

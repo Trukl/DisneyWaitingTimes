@@ -14,6 +14,7 @@
     font-size: 1.2em;
     font-weight: bold;
     /*margin: 10px;*/
+    transition: 1.5s;
 }
 
 .Attraction .FlexNormal {
@@ -34,14 +35,26 @@
     background-color: #ff0000;
 }
 
+.Red {
+    animation: ScaleUpDownRed 2s ease 0s 1 normal forwards;
+}
+.Green {
+    animation: ScaleUpDownGreen 2s ease 0s 1 normal forwards;
+}
+.Orange {
+    animation: ScaleUpDownOrange 2s ease 0s 1 normal forwards;
+}
+
 .Attraction.Closed {
     background-color: #c8c8c8;
-    /*text-decoration: line-through;*/
     color: grey;
 }
 
+.Attraction.Open .FlexNormal {
+    margin-right: 15px;
+}
+
 .Attraction .IsClosed {
-/* texte pour dire que l'attraction est fermée*/
     color: red;
     position: relative;
     right: 0;
@@ -71,4 +84,125 @@
 .Attraction.Closed .WaitingTime {
     background-color: #a9a9a9;
     color: grey;
+}
+
+.Attraction .Favorite {
+/*    place a star emoji in the upper right corner */
+    position: absolute;
+    right: 10px;
+    top: 0px;
+    font-size: 1.3rem;
+    color: #ffffff;
+    cursor: pointer;
+    transition: 1.5s;
+}
+
+.Attraction .Favorite[animated='1'] {
+    animation: scale 0.4s 1;
+}
+
+@keyframes scale {
+    0% {
+        animation-timing-function: ease-out;
+        transform: scale(1);
+        transform-origin: center center;
+    }
+
+    33% {
+        animation-timing-function: ease-out;
+        transform: scale(0.1);
+    }
+
+
+    75% {
+        animation-timing-function: ease-in;
+        transform: scale(1.5);
+    }
+    100% {
+        animation-timing-function: ease-in;
+        transform: scale(1);
+    }
+}
+
+
+@keyframes ScaleUpDownGreen {
+    0% {
+        animation-timing-function: ease-out;
+        transform: scale(1);
+        transform-origin: center center;
+    }
+
+    10% {
+        animation-timing-function: ease-in;
+        transform: scale(0.91);
+    }
+
+    17% {
+        animation-timing-function: ease-out;
+        transform: scale(0.98);
+    }
+
+    33% {
+        animation-timing-function: ease-in;
+        transform: scale(0.87);
+    }
+
+    45% {
+        animation-timing-function: ease-out;
+        transform: scale(1);
+    }
+}
+@keyframes ScaleUpDownOrange {
+    0% {
+        animation-timing-function: ease-out;
+        transform: scale(1);
+        transform-origin: center center;
+    }
+
+    10% {
+        animation-timing-function: ease-in;
+        transform: scale(0.91);
+    }
+
+    17% {
+        animation-timing-function: ease-out;
+        transform: scale(0.98);
+    }
+
+    33% {
+        animation-timing-function: ease-in;
+        transform: scale(0.87);
+    }
+
+    45% {
+        animation-timing-function: ease-out;
+        transform: scale(1);
+    }
+}
+@keyframes ScaleUpDownRed {
+    0% {
+        animation-timing-function: ease-out;
+        transform: scale(1);
+        transform-origin: center center;
+    }
+
+    10% {
+        animation-timing-function: ease-in;
+        transform: scale(0.91);
+    }
+
+    17% {
+        animation-timing-function: ease-out;
+        transform: scale(0.98);
+    }
+
+    33% {
+        animation-timing-function: ease-in;
+        transform: scale(0.87);
+    }
+
+    45% {
+        animation-timing-function: ease-out;
+        transform: scale(1);
+    }
 }

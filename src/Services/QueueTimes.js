@@ -1,9 +1,9 @@
-
+// import env from 'dotenv';
+// env.config();
 
 const getQueueTimes = async (id) => {
-  const response = await fetch(`/parks/fr/parks/${id}/queue_times.json`);
+  const response = await fetch(process.env.REACT_APP_API_URL.replace('{{id}}', id));
 
-  console.log(response)
   return response.json();
 };
 
