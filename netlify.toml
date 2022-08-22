@@ -1,4 +1,4 @@
-[[redirects]
+[[redirects]]
 from="/parks/*"
 to="https://queue-times.com/:splat"
 status=200
