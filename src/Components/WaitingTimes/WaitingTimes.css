@@ -1,0 +1,29 @@
+.App {
+  /* this is needed or the background will be offset by a few pixels at the top */
+  overflow: auto;
+  position: relative;
+}
+.App::before {
+  content: "";
+  text-align: center;
+  background-image: url('../../Assets/castle.jpg');
+  background-attachment: fixed;
+  background-position: center;
+  background-size: cover;
+  color: blue;
+
+  position: fixed;
+  left: 0;
+  right: 0;
+  z-index: -1;
+
+  display: block;
+  width: 100%;
+  height: 100%;
+
+  -o-filter: blur(10px);
+  -ms-filter: blur(10px);
+  filter: blur(10px);
+
+  transform: scale(1.1);
+}
