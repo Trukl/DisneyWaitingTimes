@@ -1,8 +1,7 @@
 
 
 const getQueueTimes = async (id) => {
-  const response = await fetch(`/fr/parks/${id}/queue_times.json`, {
-  });
+  const response = await fetch(`/parks/fr/parks/${id}/queue_times.json`);
 
   console.log(response)
   return response.json();
