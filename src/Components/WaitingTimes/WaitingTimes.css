@@ -136,7 +136,6 @@ li label svg {
   border-radius: 1px;
 }
 
-input:checked + label, input:checked + label svg {
-  /*fill: white !important;*/
+li.checked label {
   color: white;
 }
