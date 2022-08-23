@@ -15,6 +15,7 @@
     font-weight: bold;
     /*margin: 10px;*/
     transition: 1.5s;
+    position: relative;
 }
 
 .Attraction .FlexNormal {
@@ -35,15 +36,15 @@
     background-color: #ff0000;
 }
 
-.Red {
-    animation: ScaleUpDownRed 2s ease 0s 1 normal forwards;
-}
-.Green {
-    animation: ScaleUpDownGreen 2s ease 0s 1 normal forwards;
-}
-.Orange {
-    animation: ScaleUpDownOrange 2s ease 0s 1 normal forwards;
-}
+/*.Red {*/
+/*    animation: ScaleUpDownRed 2s ease 0s 1 normal forwards;*/
+/*}*/
+/*.Green {*/
+/*    animation: ScaleUpDownGreen 2s ease 0s 1 normal forwards;*/
+/*}*/
+/*.Orange {*/
+/*    animation: ScaleUpDownOrange 2s ease 0s 1 normal forwards;*/
+/*}*/
 
 .Attraction.Closed {
     background-color: #c8c8c8;
@@ -90,7 +91,7 @@
 /*    place a star emoji in the upper right corner */
     position: absolute;
     right: 10px;
-    top: 0px;
+    top: 0;
     font-size: 1.3rem;
     color: #ffffff;
     cursor: pointer;
@@ -107,13 +108,10 @@
         transform: scale(1);
         transform-origin: center center;
     }
-
     33% {
         animation-timing-function: ease-out;
         transform: scale(0.1);
     }
-
-
     75% {
         animation-timing-function: ease-in;
         transform: scale(1.5);

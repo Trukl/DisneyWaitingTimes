@@ -1,0 +1,13 @@
+.land-name {
+    text-align: center;
+    background: #ffffff96;
+    margin: 20px 40px 10px 40px;
+    padding: 10px;
+    border-radius: 10px;
+    font-size: smaller;
+}
+
+.land-name h1 {
+    color: black;
+    font-weight: bold;
+}
