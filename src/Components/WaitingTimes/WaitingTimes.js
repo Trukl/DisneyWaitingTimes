@@ -3,6 +3,7 @@ import {getQueueTimes} from "../../Services/QueueTimes";
 import Lands from "../Lands/Lands";
 import "./WaitingTimes.css";
 import {FIVE_MINUTES, TabsType} from "../../Utils/constants";
+import {getStorageValue} from "../../useLocalStorage";
 
 const getParksLandData = async () => {
   const mainPark = await getQueueTimes(4);
@@ -15,7 +16,12 @@ const getLands = async (setLands, setLandsData) => {
   const {mainPark, secondPark} = await getParksLandData();
 
   const landsData = [mainPark, secondPark].flatMap((parkLand, idx) => {
-    parkLand.forEach(land => land.parkId = idx);
+    parkLand.forEach(land => {
+      land.parkId = idx;
+      land.rides.forEach(ride => {
+        ride.isFavorite = getStorageValue(ride.id, false);
+      })
+    });
     return parkLand;
   })
   setLandsData(landsData);
@@ -113,7 +119,7 @@ const WaitingTimes = (props) => {
 
   const updateFavorites = () => {
     if (currentSelected === TabsType.FAVORITES) {
-      return getOnlyFavoritesLands(landsData, setLands)
+      getOnlyFavoritesLands(landsData, setLands)
     }
   }
   return (

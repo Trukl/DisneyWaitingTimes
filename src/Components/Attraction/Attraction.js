@@ -18,7 +18,6 @@ const Attraction = (props) => {
   const {name, 'wait_time': waitingTime, 'is_open': isOpen, id} = data;
   const [isFavorite, setIsFavorite] = useLocalStorage(id, false);
   const [animated, setAnimated] = useState(0);
-  props.data.isFavorite = isFavorite
 
   useEffect(() => {
     const elem = document.getElementsByClassName("preload")[0];
@@ -29,9 +28,11 @@ const Attraction = (props) => {
   }, []);
 
   useEffect(() => {
-    props.data.isFavorite = isFavorite
-    favoriteHandle();
-  }, [favoriteHandle, isFavorite, props.data]);
+    if (props.data.isFavorite !== isFavorite) {
+      props.data.isFavorite = isFavorite
+      favoriteHandle();
+    }
+  }, [isFavorite, props.data, favoriteHandle]);
   return (
     <Col lg={4} s={1} xs={12} md={6} className={`mb-2 p-2`} >
       <div className={`Attraction ${getDurationClass(waitingTime)} ${isOpen ? 'Open' : 'Closed'}`}>

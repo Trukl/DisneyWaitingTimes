@@ -25,7 +25,7 @@
 }
 
 .Attraction.Green {
-    background-color: #00ff00;
+    background-color: #01c501;
 }
 
 .Attraction.Orange {
@@ -74,10 +74,10 @@
     margin-right: 10px;
 }
 .Attraction.Green .WaitingTime {
-    background-color: #94ff94;
+    background-color: #26df26;
 }
 .Attraction.Orange .WaitingTime {
-    background-color: #ffd451;
+    background-color: #ecc442;
 }
 .Attraction.Red .WaitingTime {
     background-color: #b50000;
