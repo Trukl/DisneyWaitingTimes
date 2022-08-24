@@ -94,6 +94,7 @@ li {
   text-align: center;
 }
 
+
 label {
   color: black;
   overflow: hidden;
@@ -139,7 +140,14 @@ li.checked label {
   /*flex-direction: row;*/
   /*align-items: center;*/
   /*padding: 10px;*/
-  padding: 0 7px 0 7px;
+  padding: 4px 7px 4px 7px;
+  height: 100%;
+}
+
+.Order svg {
+  position: relative;
+  top: -4px;
+  left: -2px;
 }
 
 .Order span {
@@ -147,4 +155,26 @@ li.checked label {
   font-weight: bold;
   font-size: 18px;
   margin: 5%;
+}
+
+
+
+@media screen and (max-width: 500px) {
+  label {
+    font-size: 16px !important;
+  }
+
+  .Order {
+    font-size: 1.5rem;
+  }
+}
+
+@media screen and (max-width: 350px) {
+  label {
+    font-size: 14px !important;
+  }
+
+  .Order {
+    font-size: 1.3rem;
+  }
 }
