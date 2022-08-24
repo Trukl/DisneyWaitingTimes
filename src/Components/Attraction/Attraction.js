@@ -2,7 +2,7 @@ import './Attraction.css'
 import {Col} from "react-bootstrap";
 import {MdFavorite, MdFavoriteBorder} from "react-icons/md";
 import {useLocalStorage} from "../../useLocalStorage";
-import {useEffect, useState} from "react";
+import {useState} from "react";
 
 const getDurationClass = (time) => {
   if (time < 30) {
@@ -16,23 +16,36 @@ const getDurationClass = (time) => {
 const Attraction = (props) => {
   const {favoriteHandle, data} = props;
   const {name, 'wait_time': waitingTime, 'is_open': isOpen, id} = data;
-  const [isFavorite, setIsFavorite] = useLocalStorage(id, false);
+  const [isFavoriteStorage, setIsFavoriteStorage] = useLocalStorage(id, false);
+  const [isFavorite, setIsFavorite] = useState(isFavoriteStorage);
   const [animated, setAnimated] = useState(0);
 
-  useEffect(() => {
-    const elem = document.getElementsByClassName("preload")[0];
-    if (elem) {
-      const t = setTimeout(() => elem.classList.remove("preload"), 1000);
-      return () => clearTimeout(t);
-    }
-  }, []);
+  // useEffect(() => {
+  //   const elem = document.getElementsByClassName("preload")[0];
+  //   if (elem) {
+  //     const t = setTimeout(() => elem.classList.remove("preload"), 1000);
+  //     return () => clearTimeout(t);
+  //   }
+  // }, []);
 
-  useEffect(() => {
-    if (props.data.isFavorite !== isFavorite) {
-      props.data.isFavorite = isFavorite
+  // useEffect(() => {
+  //   if (props.data.isFavorite !== isFavorite) {
+  //     props.data.isFavorite = isFavorite
+  //     favoriteHandle();
+  //   }
+  // }, [isFavorite, props.data, favoriteHandle]);
+
+  const handleFavoriteClick = () => {
+    setAnimated(1);
+
+    props.data.isFavorite = !isFavorite;
+    setIsFavoriteStorage(!isFavorite)
+    setTimeout(() => {
+      setIsFavorite(!isFavorite);
       favoriteHandle();
-    }
-  }, [isFavorite, props.data, favoriteHandle]);
+    }, 300)
+  }
+
   return (
     <Col lg={4} s={1} xs={12} md={6} className={`mb-2 p-2`} >
       <div className={`Attraction ${getDurationClass(waitingTime)} ${isOpen ? 'Open' : 'Closed'}`}>
@@ -44,10 +57,7 @@ const Attraction = (props) => {
           {!isOpen ? <span className={'IsClosed'}>Fermé </span> : ''}
           <span
             className={'Favorite'}
-            onClick={() => {
-              setAnimated(1);
-              setTimeout(() => setIsFavorite(!isFavorite), 300)
-            }}
+            onClick={handleFavoriteClick}
             onAnimationEnd={() => {setAnimated(0)}}
             animated={animated}
           >

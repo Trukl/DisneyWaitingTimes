@@ -41,17 +41,11 @@
   transform: translateX(-50%);
   position: relative;
   padding: 30px;
+  display: inline-flex;
+  align-items: stretch;
+  width: 100%;
   /*padding-bottom: 80px;*/
   /*width: 70%;*/
-}
-
-.slider + input:nth-of-type(2):checked {
-  transform: translateX(100%);
-}
-
-input:nth-of-type(3):checked ~ .slider{
-  transform: translateX(200%);
-  background-color: chocolate;
 }
 
 input[name="tab-control"] {
@@ -62,6 +56,9 @@ input[name="tab-control"] {
   background-color: rgba(255, 255, 255, 0.55);
   border-radius: 15px;
   overflow: hidden;
+  width: 100%;
+  margin-bottom: 0;
+  margin-right: 10px;
 }
 
 .tabs ul li {
@@ -82,17 +79,18 @@ ul {
   list-style-type: none;
   padding-left: 0 !important;
   display: flex;
+  align-items: stretch;
   flex-direction: row;
   margin-bottom: 10px;
   justify-content: space-between;
-  align-items: flex-end;
+  /*align-items: flex-end;*/
   flex-wrap: wrap;
 }
 
 li {
   box-sizing: border-box;
   flex: 1;
-  width: calc(100% / 4);
+  width: calc(100% / 2);
   text-align: center;
 }
 
@@ -125,22 +123,28 @@ li label svg {
   /*transition: all 0.2s ease-in;*/
 }
 
-.slider {
-  position: relative;
-  width: calc(100% / 4);
-  transition: all 0.33s cubic-bezier(0.38, 0.8, 0.32, 1.07);
-}
-
-.slider .indicator {
-  position: relative;
-  width: 50px;
-  max-width: 100%;
-  margin: 0 auto;
-  height: 4px;
-  background: blue;
-  border-radius: 1px;
-}
-
 li.checked label {
   color: white;
+}
+
+.Order {
+  /*margin: auto;*/
+  font-size: 1.7rem;
+  background-color: rgba(255, 255, 255, 0.55);
+  border-radius: 15px;
+  overflow: hidden;
+  text-align: center;
+  cursor: pointer;
+  /*display: inline-flex;*/
+  /*flex-direction: row;*/
+  /*align-items: center;*/
+  /*padding: 10px;*/
+  padding: 0 7px 0 7px;
+}
+
+.Order span {
+  display: None;
+  font-weight: bold;
+  font-size: 18px;
+  margin: 5%;
 }

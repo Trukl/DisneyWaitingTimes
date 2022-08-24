@@ -1,9 +1,10 @@
-import {useEffect, useState} from "react";
+import {useEffect, useRef, useState} from "react";
 import {getQueueTimes} from "../../Services/QueueTimes";
 import Lands from "../Lands/Lands";
 import "./WaitingTimes.css";
 import {FIVE_MINUTES, TabsType} from "../../Utils/constants";
 import {getStorageValue} from "../../useLocalStorage";
+import {BsSortAlphaDown, BsSortAlphaUp, BsSortNumericDown, BsSortNumericUp} from "react-icons/bs";
 
 const getParksLandData = async () => {
   const mainPark = await getQueueTimes(4);
@@ -45,22 +46,22 @@ const getOnlyFavoritesLands = (landsData, setLands) => {
   setLands(newLandsData);
 }
 
-const displayAlphaOrder = (landsData, updateFavorites) => {
+const displayAlphaOrder = (landsData, updateFavorites, isAscending) => {
   const allRides = landsData.flatMap(land => land.rides);
-  allRides.sort((a,b) => (a.name > b.name ? 1 : -1));
+  allRides.sort((a,b) => isAscending ? (a.name > b.name ? 1 : -1) : (a.name < b.name ? 1 : -1) );
 
   return displayAttractions(allRides, updateFavorites);
 }
 
-const displayWaitingTime = (landsData, updateFavorites) => {
+const displayWaitingTime = (landsData, updateFavorites, isAscending) => {
   const allRides = landsData.flatMap(land => land.rides).filter(ride => ride.is_open);
-  allRides.sort((a,b) => (a.wait_time > b.wait_time ? 1 : -1));
+  allRides.sort((a,b) => isAscending ? (a.wait_time > b.wait_time ? 1 : -1) : (a.wait_time < b.wait_time ? 1 : -1));
 
   return displayAttractions(allRides, updateFavorites);
 }
 
 const Content = (props) => {
-  const {lands, tabsSelected, updateFavorites} = props;
+  const {lands, tabsSelected, isAscending: {isAscendingTime, isAscendingAZ}, updateFavorites} = props;
 
   switch (tabsSelected) {
     case TabsType.ALL: {
@@ -70,10 +71,10 @@ const Content = (props) => {
       return displayLands(lands, updateFavorites);
     }
     case TabsType.A_Z: {
-      return displayAlphaOrder(lands, updateFavorites);
+      return displayAlphaOrder(lands, updateFavorites, isAscendingAZ);
     }
     case TabsType.WAITING_TIME: {
-      return displayWaitingTime(lands, updateFavorites);
+      return displayWaitingTime(lands, updateFavorites, isAscendingTime);
     }
     default: {
       throw new Error('Error with tabs.');
@@ -81,11 +82,41 @@ const Content = (props) => {
   }
 }
 
-const WaitingTimes = (props) => {
+const Order = (props) => {
+  const {isAscending, currentTab, onClick} = props;
+
+  switch (currentTab) {
+    case TabsType.A_Z: {
+      return (
+        <div className={'Order'} onClick={onClick[TabsType.A_Z]}>
+          {isAscending[TabsType.A_Z] ? <BsSortAlphaDown />: <BsSortAlphaUp />}
+          <span>Trier</span>
+        </div>
+      );
+    }
+    case TabsType.WAITING_TIME: {
+      return (
+        <div className={'Order'} onClick={onClick[TabsType.WAITING_TIME]}>
+          {isAscending[TabsType.WAITING_TIME] ? <BsSortNumericDown />: <BsSortNumericUp />}
+          <span>Trier</span>
+        </div>
+      );
+    }
+    default: {
+      return;
+    }
+  }
+}
+
+const WaitingTimes = () => {
   const [lands, setLands] = useState([]);
   const [landsData, setLandsData] = useState([]);
   const [currentSelected, setCurrentSelected] = useState('all');
-
+  const [orderAZ, setOrderAZ] = useState(0);
+  const [orderTime, setOrderTime] = useState(0);
+  const selected = useRef(currentSelected);
+  const isAscendingAZ = orderAZ % 2 === 0;
+  const isAscendingTime = orderTime % 2 === 0;
 
   useEffect(() => {
     const interval = setInterval(() => getLands(setLands, setLandsData), FIVE_MINUTES);
@@ -98,6 +129,8 @@ const WaitingTimes = (props) => {
   }, []);
 
   useEffect(() => {
+    selected.current = currentSelected;
+
     switch (currentSelected) {
       case TabsType.ALL: {
         return setLands(landsData);
@@ -118,10 +151,12 @@ const WaitingTimes = (props) => {
   }, [landsData, currentSelected])
 
   const updateFavorites = () => {
-    if (currentSelected === TabsType.FAVORITES) {
+    if (selected.current === TabsType.FAVORITES) {
       getOnlyFavoritesLands(landsData, setLands)
     }
   }
+
+
   return (
     <div className="App">
       <header className="App-header">
@@ -156,8 +191,17 @@ const WaitingTimes = (props) => {
               </label>
             </li>
           </ul>
+          <Order currentTab={currentSelected}
+                 isAscending={{
+                   [TabsType.A_Z]: isAscendingAZ,
+                   [TabsType.WAITING_TIME]: isAscendingTime
+                 }}
+                 onClick={{
+                   [TabsType.A_Z]: () => setOrderAZ(c => c + 1),
+                   [TabsType.WAITING_TIME]: () => setOrderTime(c => c + 1)
+                 }}/>
         </div>
-        <Content lands={lands} tabsSelected={currentSelected} updateFavorites={updateFavorites} />
+        <Content lands={lands} tabsSelected={currentSelected} isAscending={{isAscendingAZ, isAscendingTime}} updateFavorites={updateFavorites} />
       </div>
     </div>
   )
