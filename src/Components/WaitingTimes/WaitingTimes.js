@@ -161,7 +161,7 @@ const WaitingTimes = () => {
     <div className="App">
       <header className="App-header">
       </header>
-      <div className="preload">
+      <div>
 
         <div className="tabs">
 
