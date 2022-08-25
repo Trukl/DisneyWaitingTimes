@@ -1,5 +1,3 @@
-
-
 const FIVE_MINUTES = 1000 * 60 * 5;
 
 const TabsType = {
@@ -12,5 +10,5 @@ const TabsType = {
 module.exports = Object.freeze({
   FIVE_MINUTES,
   TabsType,
-  TabsTypes: Object.values(TabsType)
+  TabsTypes: Object.values(TabsType),
 });

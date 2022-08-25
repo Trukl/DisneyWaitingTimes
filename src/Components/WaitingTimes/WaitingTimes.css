@@ -28,14 +28,6 @@
   transform: scale(1.1);
 }
 
-
-.preload *{
-  animation-duration: 0s !important;
-  -webkit-animation-duration: 0s !important;
-  transition:background-color 0s, opacity 0s, color 0s, width 0s, height 0s, padding 0s, margin 0s !important;
-}
-
-
 .tabs {
   left: 50%;
   transform: translateX(-50%);
@@ -108,7 +100,7 @@ label {
   -webkit-touch-callout: none;
 }
 
-label[role=button] {
+label.button {
   padding: 10px;
   display: block;
 }
@@ -128,53 +120,15 @@ li.checked label {
   color: white;
 }
 
-.Order {
-  /*margin: auto;*/
-  font-size: 1.7rem;
-  background-color: rgba(255, 255, 255, 0.55);
-  border-radius: 15px;
-  overflow: hidden;
-  text-align: center;
-  cursor: pointer;
-  /*display: inline-flex;*/
-  /*flex-direction: row;*/
-  /*align-items: center;*/
-  /*padding: 10px;*/
-  padding: 4px 7px 4px 7px;
-  height: 100%;
-}
-
-.Order svg {
-  position: relative;
-  top: -4px;
-  left: -2px;
-}
-
-.Order span {
-  display: None;
-  font-weight: bold;
-  font-size: 18px;
-  margin: 5%;
-}
-
-
 
 @media screen and (max-width: 500px) {
   label {
     font-size: 16px !important;
-  }
-
-  .Order {
-    font-size: 1.5rem;
   }
 }
 
 @media screen and (max-width: 350px) {
   label {
     font-size: 14px !important;
-  }
-
-  .Order {
-    font-size: 1.3rem;
   }
 }

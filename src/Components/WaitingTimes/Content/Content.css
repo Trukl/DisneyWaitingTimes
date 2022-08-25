@@ -1,0 +1,18 @@
+
+.no-fav {
+    text-align: center;
+    margin: 25% auto auto;
+    width: 70%;
+}
+
+.no-fav p {
+    padding: 15px;
+    font-size: 1.3rem;
+    background-color: rgba(255, 255, 255, 0.45);
+    border-radius: 15px;
+}
+
+.no-fav p svg {
+    color: white;
+    font-size: 1.5rem;
+}

@@ -1,0 +1,38 @@
+
+.Order {
+    font-size: 1.6rem;
+    background-color: rgba(255, 255, 255, 0.55);
+    border-radius: 15px;
+    overflow: hidden;
+    text-align: center;
+    cursor: pointer;
+    padding: 4px 7px 4px 7px;
+    height: 100%;
+}
+
+.Order svg {
+    position: relative;
+    top: -4px;
+    left: -2px;
+}
+
+.Order span {
+    display: None;
+    font-weight: bold;
+    font-size: 18px;
+    margin: 5%;
+}
+
+
+
+@media screen and (max-width: 500px) {
+    .Order {
+        font-size: 1.5rem;
+    }
+}
+
+@media screen and (max-width: 350px) {
+    .Order {
+        font-size: 1.3rem;
+    }
+}
