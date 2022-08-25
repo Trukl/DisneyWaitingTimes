@@ -50,7 +50,6 @@ input[name="tab-control"] {
   overflow: hidden;
   width: 100%;
   margin-bottom: 0;
-  margin-right: 10px;
 }
 
 .tabs ul li {

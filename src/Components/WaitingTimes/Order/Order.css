@@ -8,6 +8,7 @@
     cursor: pointer;
     padding: 4px 7px 4px 7px;
     height: 100%;
+    margin-left: 10px
 }
 
 .Order svg {
