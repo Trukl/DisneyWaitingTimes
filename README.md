@@ -1,10 +1,11 @@
 
 # Disneyland Paris Waiting Times
 
-This project makes it easier to see the waiting times of the
-more easily and visually than the official application.
+This project allows you to visualize the waiting times of Disneyland Paris more easily and more visually than the official application.
 
 
+
+This is my first project with React. If you want to improve the project, see Contributing at the end of the README.md
 ## Installation
 
 Install the dependencies using npm
@@ -24,4 +25,4 @@ To run this project during development
 
 Contributions are always welcome!
 
-See `contributing.md` for ways to get started.
+Create a new branch from master, do you stuff, the open a pull request to master !
