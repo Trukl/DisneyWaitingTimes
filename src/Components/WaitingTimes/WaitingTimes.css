@@ -6,7 +6,7 @@
 .App::before {
   content: "";
   text-align: center;
-  background-image: url('../../Assets/castle.jpg');
+  background-image: url('../../Assets/Images/castle.jpg');
   background-attachment: fixed;
   background-position: center;
   background-size: cover;
@@ -21,7 +21,6 @@
   width: 100%;
   height: 100%;
 
-  -o-filter: blur(10px);
   -ms-filter: blur(10px);
   filter: blur(10px);
 
@@ -36,8 +35,6 @@
   display: inline-flex;
   align-items: stretch;
   width: 100%;
-  /*padding-bottom: 80px;*/
-  /*width: 70%;*/
 }
 
 input[name="tab-control"] {
@@ -59,7 +56,6 @@ input[name="tab-control"] {
 ul li label {
   font-weight: bold;
   font-size: 18px;
-  /*color: blue;*/
 }
 
 li.checked {
@@ -74,7 +70,6 @@ ul {
   flex-direction: row;
   margin-bottom: 10px;
   justify-content: space-between;
-  /*align-items: flex-end;*/
   flex-wrap: wrap;
 }
 
@@ -112,7 +107,6 @@ li label svg {
   height: 1.2em;
   vertical-align: center;
   margin-right: 0.2em;
-  /*transition: all 0.2s ease-in;*/
 }
 
 li.checked label {

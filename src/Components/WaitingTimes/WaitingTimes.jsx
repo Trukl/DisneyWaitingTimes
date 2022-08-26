@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import getQueueTimes from '../../Services/QueueTimes';
 import './WaitingTimes.css';
 import { FIVE_MINUTES, TabsType } from '../../Utils/constants';
-import { getStorageValue } from '../../useLocalStorage';
+import { getStorageValue } from '../../Utils/useLocalStorage';
 import Content from './Content/Content';
 import Order from './Order/Order';
 

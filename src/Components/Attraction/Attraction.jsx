@@ -2,7 +2,7 @@ import './Attraction.css';
 import { Col } from 'react-bootstrap';
 import { MdFavorite, MdFavoriteBorder } from 'react-icons/md';
 import React, { useState } from 'react';
-import { useLocalStorage } from '../../useLocalStorage';
+import { useLocalStorage } from '../../Utils/useLocalStorage';
 
 const getDurationClass = (time) => {
   if (time < 30) {

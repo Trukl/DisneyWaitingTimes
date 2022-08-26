@@ -1,7 +1,7 @@
 
 .no-fav {
     text-align: center;
-    margin: 25% auto auto;
+    margin: 15% auto auto;
     width: 70%;
 }
 
@@ -15,4 +15,10 @@
 .no-fav p svg {
     color: white;
     font-size: 1.5rem;
+}
+
+@media screen and (max-width: 500px) {
+    .no-fav {
+        margin: 25% auto auto;
+    }
 }

@@ -13,7 +13,6 @@
     color: #FFF;
     font-size: 1.2em;
     font-weight: bold;
-    /*margin: 10px;*/
     transition: 1.5s;
     position: relative;
 }
@@ -35,16 +34,6 @@
 .Attraction.Red {
     background-color: #ff0000;
 }
-
-/*.Red {*/
-/*    animation: ScaleUpDownRed 2s ease 0s 1 normal forwards;*/
-/*}*/
-/*.Green {*/
-/*    animation: ScaleUpDownGreen 2s ease 0s 1 normal forwards;*/
-/*}*/
-/*.Orange {*/
-/*    animation: ScaleUpDownOrange 2s ease 0s 1 normal forwards;*/
-/*}*/
 
 .Attraction.Closed {
     background-color: #c8c8c8;
@@ -88,7 +77,6 @@
 }
 
 .Attraction .Favorite {
-/*    place a star emoji in the upper right corner */
     position: absolute;
     right: 10px;
     top: 0;
